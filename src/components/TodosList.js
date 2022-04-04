@@ -67,6 +67,8 @@ const TodosList = ({
     setTodos(selectedTodo);
   };
 
+
+
   //activePage is responsible for rendering items correctly
   let end = activePage * todosPerPage;
   let start = end - todosPerPage;
