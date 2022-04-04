@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import "./App.css";
 import { Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Pagination from "./components/Pagination";
-import SearchForm from "./components/SearchForm";
-import TodosList from "./components/TodosList";
+import Pagination from "./components/pagination/Pagination";
+import SearchForm from "./components/searchForm/SearchForm";
+import TodosList from "./components/todoList/TodosList";
 
 const App = () => {
   const [todos, setTodos] = useState([]);

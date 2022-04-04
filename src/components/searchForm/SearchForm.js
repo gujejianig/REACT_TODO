@@ -1,5 +1,6 @@
 import { Button } from "react-bootstrap";
 import React, { useState } from "react";
+import  "./searchform.css"
 
 const SearchForm = ({ setTodos, todos, onPaginatedList, todosPerPage }) => {
   const [inputValue, setInputValue] = useState("");
@@ -29,7 +30,7 @@ const SearchForm = ({ setTodos, todos, onPaginatedList, todosPerPage }) => {
       <input
         onKeyUp={handleKeyDown}
         value={inputValue}
-        style={{ width: "100%", borderRadius: "5px" }}
+        className='SearchInput'
         onChange={(e) => setInputValue(e.target.value)}
       />
       <Button size="sm" onClick={submitHandler} variant="primary">
