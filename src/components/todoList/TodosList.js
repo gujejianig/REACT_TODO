@@ -48,7 +48,6 @@ const TodosList = ({
           setEditing(true);
         } else {
           todo.task = editInputValue;
-          console.log('gamarjoba')
           setEditing(false);
 
         }
