@@ -42,7 +42,6 @@ const App = () => {
           todos={todos}
           todosPerPage={todosPerPage}
         />
-        gamarhoba
       </div>
     </>
   );
