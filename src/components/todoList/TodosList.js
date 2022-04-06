@@ -14,20 +14,20 @@ const TodosList = ({
   // remove Task from the list
   const removeHandler = (id) => {
     setTodos(todos.filter(todoItem => todoItem.id !== id));
-    // const mapped = todos.filter((todo) => {
-    //   if(todo.id === id && todo.editMode ) {
-    //      todo.editMode = false
-    //   } else if(todo.id === id && !todo.editMode) {
-    //     return todo.id!==id
-    //   }
-    //   return todo
-    // })
-    // setTodos(mapped)
-    //
-    // // // Reduce pagination by one when the last item is deleted from the last page
-    // if ((todos.length - 1) % 5 === 0 && activePage === lastBtnPagination) {
-    //   setActivePage(activePage - 1);
-    // }
+    const mapped = todos.filter((todo) => {
+      if(todo.id === id && todo.editMode ) {
+         todo.editMode = false
+      } else if(todo.id === id && !todo.editMode) {
+        return todo.id!==id
+      }
+      return todo
+    })
+    setTodos(mapped)
+
+    // // Reduce pagination by one when the last item is deleted from the last page
+    if ((todos.length - 1) % 5 === 0 && activePage === lastBtnPagination) {
+      setActivePage(activePage - 1);
+    }
   };
 
   const editHandler = (id, inputValue) => {
