@@ -10,22 +10,18 @@ const TodosList = ({
   setActivePage,
   lastBtnPagination,
 }) => {
-  const [editing, setEditing] = useState(false); // controls if edit mode is on/off
 
   // remove Task from the list
   const removeHandler = (id) => {
-
-
-
-
-    todos.map((todo) => {
-      if(todo.editMode) {
-        todo.editMode = false
-        console.log('helllo')
-
+    const mapped = todos.filter((todo) => {
+      if(todo.id === id && todo.editMode ) {
+         todo.editMode = false
+      } else if(todo.id === id && !todo.editMode) {
+        return todo.id!==id
       }
+      return todo
     })
-
+    setTodos(mapped)
 
     // // Reduce pagination by one when the last item is deleted from the last page
     if ((todos.length - 1) % 5 === 0 && activePage === lastBtnPagination) {
@@ -36,28 +32,20 @@ const TodosList = ({
   const editHandler = (id, inputValue) => {
     const selected = todos.map((todo) => {
       if (todo.id === id) {
-        console.log(inputValue?.length)
         !todo.editMode ? (todo.editMode = true) : (todo.editMode = false);
-        if (todo.editMode) {
-          setEditing(true);
-        }
-        else if (!todo.editMode && inputValue.length > 0) {
-          console.log("save==>", inputValue);
+         if (!todo.editMode && inputValue.length > 0) {
           todo.task = inputValue;
-          setEditing(false);
+          console.log('first')
         }
         else {
           todo.editMode = true
-          setEditing(true)
+           console.log('second')
         }
-
       }
-
       return todo;
     });
     setTodos(selected);
   };
-  // console.log(editInputValue);
   const checkboxHandler = (id) => {
     const selectedTodo = todos.map((todo) => {
       if (todo.id === id) {
