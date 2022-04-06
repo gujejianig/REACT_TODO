@@ -3,6 +3,7 @@ import { Button } from "react-bootstrap";
 
 const Todo = ({ item, checkboxHandler, removeHandler, editHandler }) => {
   const inputRef = useRef("");
+
   return (
     <div className="bg-success bg-opacity-10 rounded-3 p-lg-2 d-flex mt-3 align-items-center">
       {item.editMode ? (
