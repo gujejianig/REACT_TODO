@@ -3,20 +3,20 @@ import React, { useEffect, useState } from "react";
 import Todo from "../singleTodo/Todo";
 
 const TodosList = ({
-  todos,
-  setTodos,
-  todosPerPage,
-  activePage,
-  setActivePage,
-  lastBtnPagination,
-}) => {
+                     todos,
+                     setTodos,
+                     todosPerPage,
+                     activePage,
+                     setActivePage,
+                     lastBtnPagination,
+                   }) => {
 
   // remove Task from the list
   const removeHandler = (id) => {
     setTodos(todos.filter(todoItem => todoItem.id !== id));
     const mapped = todos.filter((todo) => {
       if(todo.id === id && todo.editMode ) {
-         todo.editMode = false
+        todo.editMode = false
       } else if(todo.id === id && !todo.editMode) {
         return todo.id!==id
       }
@@ -25,7 +25,7 @@ const TodosList = ({
     setTodos(mapped)
 
     // // Reduce pagination by one when the last item is deleted from the last page
-    if ((todos.length - 1) % 5 === 0 && activePage === lastBtnPagination) {
+    if ((todos.length - 1) % 10 === 0 && activePage === lastBtnPagination) {
       setActivePage(activePage - 1);
     }
   };
@@ -34,7 +34,7 @@ const TodosList = ({
     const selected = todos.map((todo) => {
       if (todo.id === id) {
         !todo.editMode ? (todo.editMode = true) : (todo.editMode = false);
-         if (!todo.editMode && inputValue.length > 0) {
+        if (!todo.editMode && inputValue.length > 0) {
           todo.task = inputValue;
         }
         else {

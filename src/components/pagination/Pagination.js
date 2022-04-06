@@ -9,14 +9,18 @@ const Pagination = ({
   setLastBtnPagination,
 }) => {
   let paginationButtons = [];
-  for (let i = 1; i <= Math.ceil(todos.length / todosPerPage); i++) {
-    paginationButtons.push(i);
-  }
+
+
+
+    for (let i = 1; i <= Math.ceil(todos.length / todosPerPage); i++) {
+      paginationButtons.push(i);
+    }
 
   return (
     <div className="d-flex">
       {paginationButtons?.map((btn, index) => {
         setLastBtnPagination(btn);
+
         return (
           <div key={index}>
             <Button
