@@ -3,16 +3,19 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Pagination from "./components/pagination/Pagination";
 import SearchForm from "./components/searchForm/SearchForm";
-import TodosList from "./components/todoList/TodosList";
-import Todo from "./components/singleTodo/Todo";
+import Todos from "./components/singleTodo/Todos";
 
 const App = () => {
   const [todos, setTodos] = useState([]);
   const todosPerPage = 10;
   const [activePage, setActivePage] = useState(1);
+  const [lastBtnPagination, setLastBtnPagination] = useState(null); //highest value from buttons in pagination
+
+
+
   const removeHandler = (id) => {
     setTodos(todos.filter(todoItem => todoItem.id !== id));
-    const mapped = todos.filter((todo) => {
+    const filteredTodo = todos.filter((todo) => {
       if(todo.id === id && todo.editMode ) {
         todo.editMode = false
       } else if(todo.id === id && !todo.editMode) {
@@ -20,8 +23,7 @@ const App = () => {
       }
       return todo
     })
-    setTodos(mapped)
-
+    setTodos(filteredTodo)
     // // Reduce pagination by one when the last item is deleted from the last page
     if ((todos.length - 1) % 10 === 0 && activePage === lastBtnPagination) {
       setActivePage(activePage - 1);
@@ -56,7 +58,6 @@ const App = () => {
   let end = activePage * todosPerPage;
   let start = end - todosPerPage;
 
-  const [lastBtnPagination, setLastBtnPagination] = useState(null); //highest value from buttons in pagination
 
   const paginatedList = (activeNumber) => {
     setActivePage(activeNumber);
@@ -74,7 +75,7 @@ const App = () => {
         <>
           {todos.slice(start, end)?.map((item) => {
             return (
-              <Todo
+              <Todos
                 key={item.id}
                 item={item}
                 checkboxHandler={checkboxHandler}

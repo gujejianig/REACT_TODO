@@ -1,7 +1,8 @@
 import React, { useRef } from "react";
 import { Button } from "react-bootstrap";
+import "./todos.css"
 
-const Todo = ({ item, checkboxHandler, removeHandler, editHandler }) => {
+const Todos = ({ item, checkboxHandler, removeHandler, editHandler }) => {
   const inputRef = useRef("");
   return (
     <div className="bg-success bg-opacity-10 rounded-3 p-lg-2 d-flex mt-3 align-items-center">
@@ -13,11 +14,7 @@ const Todo = ({ item, checkboxHandler, removeHandler, editHandler }) => {
         />
       ) : (
         <span
-          style={{
-            fontSize: "24px",
-            minWidth: "100px",
-            textDecoration: item.done ? "line-through" : "",
-          }}
+          className={`todoTag ${item.done ? 'lineThrougher' : ''}`}
         >
           {item.task}
         </span>
@@ -43,4 +40,4 @@ const Todo = ({ item, checkboxHandler, removeHandler, editHandler }) => {
   );
 };
 
-export default Todo;
+export default Todos;
