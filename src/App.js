@@ -12,7 +12,6 @@ const App = () => {
   const [lastBtnPagination, setLastBtnPagination] = useState(null); //highest value from buttons in pagination
 
 
-
   const removeHandler = (id) => {
     setTodos(todos.filter(todoItem => todoItem.id !== id));
     const filteredTodo = todos.filter((todo) => {
