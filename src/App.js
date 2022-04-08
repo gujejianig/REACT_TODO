@@ -33,6 +33,7 @@ const App = () => {
 		setTodos(selected);
 	};
 
+
 	const checkboxHandler = (id) => {
 		const selectedTodo = todos.map((todo) => {
 			if (todo.id === id) {
