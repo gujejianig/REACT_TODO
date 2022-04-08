@@ -1,6 +1,6 @@
 import { Button } from "react-bootstrap";
 import React, { useState } from "react";
-import  "./searchform.css"
+import  "./searchForm.css"
 
 const SearchForm = ({ setTodos, todos, onPaginatedList, todosPerPage }) => {
   const [inputValue, setInputValue] = useState("");

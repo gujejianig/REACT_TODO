@@ -2,15 +2,13 @@ import React, {useEffect, useRef, useState} from "react";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Pagination from "./components/pagination/Pagination";
-import SearchForm from "./components/searchForm/SearchForm";
+import AddTask from "./components/searchForm/SearchForm";
 import Todos from "./components/singleTodo/Todos";
 
 const App = () => {
   const [todos, setTodos] = useState([]);
   const todosPerPage = 10;
   const [activePage, setActivePage] = useState(1);
-  const [lastBtnPagination, setLastBtnPagination] = useState(null); //highest value from buttons in pagination
-
 
   const removeHandler = (id) => {
     setTodos(todos.filter(todoItem => todoItem.id !== id));
@@ -23,9 +21,9 @@ const App = () => {
       return todo
     })
     setTodos(filteredTodo)
-    // // Reduce pagination by one when the last item is deleted from the last page
-    if ((todos.length - 1) % 10 === 0 && activePage === lastBtnPagination) {
-      setActivePage(activePage - 1);
+
+    if(Math.ceil(todos.length / todosPerPage) >= 1 && todos.length % 10 === 1){
+     setActivePage(activePage - 1)
     }
   };
 
@@ -65,7 +63,7 @@ const App = () => {
   return (
     <>
       <div className="Container">
-        <SearchForm
+        <AddTask
           onPaginatedList={setActivePage}
           todosPerPage={todosPerPage}
           todos={todos}
@@ -85,7 +83,6 @@ const App = () => {
           })}
         </>
         <Pagination
-          setLastBtnPagination={setLastBtnPagination}
           setActivePage={setActivePage}
           activePage={activePage}
           onPaginatedList={paginatedList}

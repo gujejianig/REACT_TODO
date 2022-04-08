@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import { Button } from "react-bootstrap";
-import "./todos.css"
+import "./todos.css";
 
 const Todos = ({ item, checkboxHandler, removeHandler, editHandler }) => {
   const inputRef = useRef("");
@@ -13,9 +13,7 @@ const Todos = ({ item, checkboxHandler, removeHandler, editHandler }) => {
           // onChange={setEditInputValue(inputRef.current?.value)}
         />
       ) : (
-        <span
-          className={`todoTag ${item.done ? 'lineThrougher' : ''}`}
-        >
+        <span className={`todoTag ${item.done ? "lineThrougher" : ""}`}>
           {item.task}
         </span>
       )}
