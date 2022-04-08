@@ -6,23 +6,23 @@ const Todos = ({
 	               item,
 	               setTodos,
 	               todos,
-	               removeHandler
+	               removeHandler,
                }) => {
+
 	const [editMode, setEditMode] = useState(false);
 	const inputRef = useRef(null);
-
 
 	const editHandler = (id, inputValue, editMode) => {
 		const selected = todos.map((todo) => {
 			if (todo.id === id && editMode && inputValue.length > 0) {
 				todo.task = inputValue;
-				setEditMode(false);
+				setEditMode(false)
 			}
 			return todo;
 		});
 		setTodos(selected);
 	};
-
+// kkkkkkk
 	const checkboxHandler = (id) => {
 		const selectedTodo = todos.map((todo) => {
 			if (todo.id === id) {
