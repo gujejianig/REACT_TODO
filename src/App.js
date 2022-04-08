@@ -37,7 +37,11 @@ const App = () => {
 	const checkboxHandler = (id) => {
 		const selectedTodo = todos.map((todo) => {
 			if (todo.id === id) {
-				!todo.done ? (todo.done = true) : (todo.done = false);
+				return {
+					...todo,
+					done: !todo.done ? (todo.done = true) : (todo.done = false)
+				}
+
 			}
 			return todo;
 		});
@@ -70,6 +74,7 @@ const App = () => {
 				todosPerPage={todosPerPage}
 
 			/>
+
 		</div>
 	</>);
 };
