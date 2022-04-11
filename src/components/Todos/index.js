@@ -14,8 +14,10 @@ const Todos = ({
 
 
 	const onEditClick = () => {
-		editHandler(item.id, inputRef.current?.value);
-		setEditMode(false);
+		if(inputRef.current?.value.length > 0 ) {
+			editHandler(item.id, inputRef.current?.value);
+			setEditMode(false);
+		}
 	}
 	return (
 		<div className="bg-success bg-opacity-10 rounded-3 p-lg-2 d-flex mt-3 align-items-center">

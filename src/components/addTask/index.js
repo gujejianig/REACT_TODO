@@ -7,7 +7,7 @@ const SearchForm = ({ setTodos, todos, onPaginatedList, todosPerPage }) => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    if (!inputValue) {
+    if (inputValue.trim().length === 0) {
       alert("input have no value");
     } else {
       const newItem = { task: inputValue, id: Math.random() };

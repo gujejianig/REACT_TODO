@@ -13,7 +13,6 @@ const App = () => {
 	let start = end - todosPerPage;
 
 	const removeHandler = (id) => {
-		//filter makes new array - doesnt mutating
 		setTodos(todos.filter((todoItem) => todoItem.id !== id));
 		if ((todos.length - 1) % todosPerPage === 0 && (todos.length - 1) / todosPerPage === activePage - 1) {
 			setActivePage(activePage - 1);
@@ -39,9 +38,8 @@ const App = () => {
 			if (todo.id === id) {
 				return {
 					...todo,
-					done: !todo.done ? (todo.done = true) : (todo.done = false)
+					done: !todo.done,
 				}
-
 			}
 			return todo;
 		});
@@ -72,7 +70,6 @@ const App = () => {
 				activePage={activePage}
 				todos={todos}
 				todosPerPage={todosPerPage}
-
 			/>
 
 		</div>
